@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Menu {
     public void menu() {
+        Lista registro = new Lista();
+        Arbol arbol = new Arbol();
         try (Scanner entrada = new Scanner(System.in)) {
             Operaciones operaciones = new Operaciones();
             int op = 0;
@@ -22,28 +24,32 @@ public class Menu {
                 op = entrada.nextInt();
                 switch (op) {
                     case 1:
-                        operaciones.carga();
+                        operaciones.buscar(arbol, entrada);
                         break;
                     case 2:
-                        operaciones.carga();
+                        operaciones.venta(arbol, entrada, registro);
                         break;
                     case 3:
-                        operaciones.Actualizar();
+                        operaciones.ingreso(arbol, entrada, registro);
                         break;
                     case 4:
-                        operaciones.eliminar();
+                        operaciones.Actualizar(arbol, entrada, registro);
                         break;
                     case 5:
-                        operaciones.imprimir();
+                        operaciones.carga(arbol, entrada, registro);
                         break;
                     case 6:
-                        operaciones.aleatorios();
+                        operaciones.eliminar(arbol, entrada);
                         break;
                     case 7:
-                        operaciones.venta();
+                        operaciones.imprimir(arbol);
                         break;
                     case 8:
-                        operaciones.registro();
+                        registro = operaciones.registro(registro);
+                        break;
+                    case 9:
+                    operaciones.aleatorios(arbol, entrada, registro);
+                    break;
                     default:
                         System.out.println("Hasta Luego");
                         break;
