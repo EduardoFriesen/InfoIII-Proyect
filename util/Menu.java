@@ -11,14 +11,15 @@ public class Menu {
             int op = 0;
             do {
                 System.out.println("**************CONTROL DE STOCK**************");
-                System.out.println("\t1.- Ingresar producto.");
-                System.out.println("\t2.- Consultar stock de un producto.");
-                System.out.println("\t3.- Actualizar stock de un producto.");
-                System.out.println("\t4.- Eliminar producto del inventario.");
-                System.out.println("\t5.- Mostrar el inventario.");
-                System.out.println("\t6.- Ingresdo de productos aleatorios.");
-                System.out.println("\t7.- Registrar Venta.");
+                System.out.println("\t1.- Consultar stock de un producto.");
+                System.out.println("\t2.- Registrar venta.");
+                System.out.println("\t3.- Registrar ingresos.");
+                System.out.println("\t4.- Actualizar Stock.");
+                System.out.println("\t5.- Registrar nuevo producto.");
+                System.out.println("\t6.- Eliminar producto.");
+                System.out.println("\t7.- Mostrar inventario.");
                 System.out.println("\t8.- Mostrar Registro.");
+                System.out.println("\t9.- Generar productos aleatorios.");
                 System.out.println("\t0.- Salir.");
                 System.out.println("Opcion: ");
                 op = entrada.nextInt();

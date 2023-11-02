@@ -1,6 +1,5 @@
 package util;
 
-import clases.Producto;
 import clases.Registro;
 
 public class Nodo<Registro> {
