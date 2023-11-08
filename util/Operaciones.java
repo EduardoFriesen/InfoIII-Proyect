@@ -17,16 +17,25 @@ public class Operaciones {
             if (nombre != "") {
                 System.out.println("Ingrese la cantidad: ");
                 cantidad = entrada.nextInt();
-                producto.nuevo(nombre, cantidad);
-                arbol.insertar(producto);
-                registro.push(producto, cantidad);
-                System.out.println("Nuevo elemento:" + producto.getName() + " Cantidad: " + producto.getCantidad());
+                if (arbol.buscar(nombre) == null) {
+                    producto.nuevo(nombre, cantidad);
+                    arbol.insertar(producto);
+                    registro.push(producto, cantidad);
+                    System.out.println("Nuevo elemento:" + producto.getName() + " Cantidad: " + producto.getCantidad());
+                } else {
+                    System.out.println("El producto ya existe, se toma como ingreso");
+                    NodoBinario<Producto> nodo = arbol.buscar(nombre);
+                    registro.push(nodo.getElemento(), cantidad);
+                    nodo.getElemento().setStock(cantidad + nodo.getElemento().getCantidad());
+                    arbol.imprimirNodo(nodo);
+                }
             }
+
         } while (nombre != "");
     }
 
-    public void ingreso(Arbol arbol, Scanner entrada, Lista registro){
-            String nombre;
+    public void ingreso(Arbol arbol, Scanner entrada, Lista registro) {
+        String nombre;
         do {
             System.out.print("Nombre del producto (0 para salir): ");
             nombre = entrada.nextLine();
@@ -35,7 +44,7 @@ public class Operaciones {
                 try {
                     NodoBinario<Producto> nodo = arbol.buscar(nombre);
                     System.out.print("  cantidad: ");
-                    int cantidad =entrada.nextInt();
+                    int cantidad = entrada.nextInt();
                     registro.push(nodo.getElemento(), cantidad);
                     nodo.getElemento().setStock(cantidad + nodo.getElemento().getCantidad());
                     arbol.imprimirNodo(nodo);
@@ -70,7 +79,7 @@ public class Operaciones {
                     NodoBinario<Producto> nodo = arbol.buscar(nombre);
                     System.out.print("Cantidad actual: " + nodo.getElemento().getCantidad());
                     System.out.print("  Nueva Cantidad: ");
-                    int cantidad =entrada.nextInt();
+                    int cantidad = entrada.nextInt();
                     registro.push(nodo.getElemento(), cantidad - nodo.getElemento().getCantidad());
                     nodo.getElemento().setStock(cantidad);
                     arbol.imprimirNodo(nodo);
